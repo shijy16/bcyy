@@ -1,2 +1,1 @@
-# my_github_actions
-My github actions.
+# 班车定时预约脚本
