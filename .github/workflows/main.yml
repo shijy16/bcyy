@@ -1,0 +1,23 @@
+name: bcyy
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 4 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Environment Setting
+        run: pip install -r ./bcyy/requirements.txt
+
+      - name: Run Python
+        run: python ./bcyy/bcyy.py -username=${{ secrets.USERNAME }} -passwd=${{ secrets.PASSWD }}
